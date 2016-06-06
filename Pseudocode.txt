@@ -1,0 +1,34 @@
+
+# Pseudocodigo
+
+# Input: (int)     Some number
+# return: (string) Next message to send in conversation
+msg = Conversation.next_message()
+
+# input  : 
+#         phonenumber to send
+#          message to send
+# return : pass/fail
+SendSMS(number,msg)
+
+# input  : void
+# return : struct Conversation
+ReceiveSMS
+
+struct Conversation
+ - number
+ - message
+
+
+
+
+
+#recive entry point
+ /receive_msg
+  conversation = ReceiveSMS
+  msg = Conversation.next_mesage(conversation.number)
+  SendSMS(conversation.number,msg)
+end
+
+
+
