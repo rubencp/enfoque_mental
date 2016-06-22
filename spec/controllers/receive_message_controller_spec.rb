@@ -9,4 +9,10 @@ RSpec.describe ReceiveMessageController, :type => :controller do
     end
   end
 
+  describe "POST receive" do
+    it "returns http success" do
+      post :receive
+      expect(response).to have_http_status(:success)
+    end
+  end
 end
