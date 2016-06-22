@@ -13,3 +13,8 @@ bundle install
 
 rails generate cucumber:install
 
+
+http://sourcey.com/building-the-prefect-rails-5-api-only-app/
+add gem rspec-rails and factory_girl_rails
+bundle
+rails g rspec:install
