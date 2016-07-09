@@ -22,6 +22,14 @@ gem 'puma', '~> 3.0'
 
  gem 'twilio-ruby'
 
+group :production do
+# Use postgresql as the database for Active Record
+#  gem 'ruby', '2.0.0'
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
