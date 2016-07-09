@@ -3,7 +3,12 @@ class ReceiveMessageController < ApplicationController
   def receive
    next_message = Conversation.new(params['phone']).next
    
-   render plain: twilio_xml(next_message)
+   twiml = Twilio::TwiML::Response.new do |r|
+    r.Message "Buenos Dias"
+    next_message = r.Message
+   end
+
+   render plain: next_message
   end
 
   private
