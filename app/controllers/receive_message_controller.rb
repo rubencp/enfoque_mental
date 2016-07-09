@@ -4,10 +4,10 @@ class ReceiveMessageController < ApplicationController
    next_message = Conversation.new(params['phone']).next
    
    twiml = Twilio::TwiML::Response.new do |r|
-    r.Message "Buenos Dias"
+    r.Message "Buenos Dias."
     next_message = r.Message
    end
-
+   twiml.text
    render plain: next_message
   end
 
