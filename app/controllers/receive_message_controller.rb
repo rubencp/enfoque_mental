@@ -8,7 +8,7 @@ class ReceiveMessageController < ApplicationController
     next_message = r.Message
    end
    twiml.text
-   render plain: next_message
+   #render plain: next_message
   end
 
   private
