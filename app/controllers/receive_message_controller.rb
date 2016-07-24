@@ -2,13 +2,22 @@ class ReceiveMessageController < ApplicationController
 
   def receive
    next_message = Conversation.new(params['phone']).next
-   
+
+
+   user = User.first
+   sms_count = user.message_nr
+   user.message_nr += 1
+   user.save
+
+   message = Conversation.messages[sms_count]
+
    twiml = Twilio::TwiML::Response.new do |r|
-    r.Message "Buenos Dias."
-    next_message = r.Message
+    r.Message message 
    end
    twiml.text
-   render plain: twiml.text
+
+   #debug = message +  sms_count.to_s + " "
+   render plain: message
   end
 
   private
@@ -17,4 +26,10 @@ class ReceiveMessageController < ApplicationController
     "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Message>"+message+"</Message></Response>"
   end
 
+  
+
+
+
 end
+
+
