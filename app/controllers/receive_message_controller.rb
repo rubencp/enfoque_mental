@@ -1,5 +1,4 @@
 class ReceiveMessageController < ApplicationController
-
   def receive
 
    from_number = params["From"]
@@ -11,9 +10,6 @@ class ReceiveMessageController < ApplicationController
    end
    twiml.text
 
-   render plain: message
+    render plain: message
   end
-
 end
-
-
