@@ -30,10 +30,8 @@ end
 
 
 group :development, :test do
-
-# Use sqlite3 as the database for Active Record
- #gem 'sqlite3'
- gem 'pg'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -48,7 +46,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
-
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
