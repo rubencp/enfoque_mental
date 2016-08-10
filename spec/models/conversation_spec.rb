@@ -15,13 +15,7 @@ RSpec.describe Conversation, type: :controller do
     end
 
     it 'responds with the first message after all messages' do
-      conversation.next
-      conversation.next
-      conversation.next
-      conversation.next
-      conversation.next
-      conversation.next
-      conversation.next
+      7.times { conversation.next }
 
       expect(conversation.next).to eq('¿Quién eres?')
     end
