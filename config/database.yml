@@ -18,5 +18,10 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
+  adapter: postgresql
+#  encoding: unicode
+#  host: localhost
+#  username: rails_dev
+#  password: R4ils_dev
+  pool: 5
   database: enfoque_prod
