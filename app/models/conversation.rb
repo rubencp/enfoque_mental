@@ -6,7 +6,7 @@ class Conversation
     @messages << '¿Cuál es tu propósito en esta vida?'
     @messages << '¿Cuál es tu vocación?'
     @messages << '¿Cómo te sientes?'
-    @messages << '¿Qué meta puedes y decides plasmar como tu obra maestra?'
+    @messages << '¿Qué puedes y decides plasmar como tu obra maestra?'
     @messages << '¿Qué canción te motiva a plasmar tu obra maestra?'
     @messages << '¿Qué siguiente acción te necesita?'
   end
