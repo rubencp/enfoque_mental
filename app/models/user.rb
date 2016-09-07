@@ -34,5 +34,20 @@ class User < ApplicationRecord
     @messages[sms_count]
   end
 
+  def self.send_reminder_message
+ 
+    account_sid = ENV['TWILIO_SID']
+    auth_token = ENV['TWILIO_AUTH']
+
+    # set up a client to talk to the Twilio REST API 
+    @client = Twilio::REST::Client.new account_sid, auth_token 
+     
+    @client.account.messages.create({
+      :from => '+525549998395', 
+      :to => '+4917664825244', 
+      :body => 'Ya hice mi tarea, que sigue ahora?',  
+    }) 
+
+  end
 
 end
