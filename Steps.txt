@@ -21,3 +21,12 @@ rails g rspec:install
 
 Generate controller
 rails generate controller ReceiveMessage receive
+
+
+rvm list
+rvm gemset list
+
+rvm use ruby-2.3.0
+rvm gemset list
+
+rvm use ruby-2.3.0@rails5.0
