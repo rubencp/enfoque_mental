@@ -10,6 +10,9 @@ after_initialize :default_values
     MESSAGES << '¿Qué canción te motiva a plasmar tu obra maestra?'
     MESSAGES << '¿Qué siguiente acción te necesita?'
 
+
+  scope :older_than, -> (days) { where("last_message_at < ?", Date.today-days) }
+
   def initialize(someparams)
     super
     number = someparams[:number]
@@ -23,6 +26,7 @@ after_initialize :default_values
       self.message_nr = 0
       self.conversation_nr += 1
     end
+    self.last_message_at = Time.now
     save
   end
 
@@ -32,8 +36,9 @@ after_initialize :default_values
   end
 
   def next
+    message = MESSAGES[message_nr]
     increment_conversation
-    MESSAGES[message_nr]
+    message
   end
 
   def last
@@ -48,19 +53,22 @@ after_initialize :default_values
     # set up a client to talk to the Twilio REST API 
     @client = Twilio::REST::Client.new account_sid, auth_token 
      
-    # @client.account.messages.create({
-    #   :from => '+525549998395', 
-    #   :to => self.number, 
-    #   :body => last,  
-    # }) 
+    @client.account.messages.create({
+       :from => '+525549998395', 
+       :to => self.number, 
+       :body => last,  
+     }) 
 
-    puts "Re-Sending :" + last + "to: " + self.number
+    puts "Re-Sending:" + last + " to: " + self.number
 
   end
+
 
   private
     def default_values
       self.message_nr ||= 0
+      self.conversation_nr ||= 0
+      self.last_message_at ||= Time.now
     end
 
 end
