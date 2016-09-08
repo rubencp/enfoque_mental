@@ -2,12 +2,13 @@ namespace :resend_daily do
 
  desc "Re-Send SMS to users without activity"
 
- task: :re_send => :production do
-   User.without_activity.send
- end
+ task :re_send => :environment do
 
- task: :re_send => :development do
-   puts "Re-Sending SMS..."
+   @users_to_resend = User.older_than(1)
+
+   @users_to_resend.each do |user|
+    user.send_reminder_message
+   end
 
  end
 
