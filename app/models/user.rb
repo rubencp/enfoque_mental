@@ -12,6 +12,7 @@ after_initialize :default_values
 
 
   scope :older_than, -> (days) { where("last_message_at < ?", Date.today-days) }
+  scope :older_than_hours, -> (hours) { where("last_message_at < ?", Time.now-hours) }
 
   def initialize(someparams)
     super
