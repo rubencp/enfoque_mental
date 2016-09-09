@@ -11,6 +11,8 @@ end
 
 bundle install
 
+bundle install --without production
+
 rails generate cucumber:install
 
 
