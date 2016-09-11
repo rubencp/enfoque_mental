@@ -4,7 +4,7 @@ namespace :resend_daily do
 
  task :re_send => :environment do
 
-   @users_to_resend = User.older_than(1)
+   @users_to_resend = User.older_than_hours(24)
 
    @users_to_resend.each do |user|
     user.send_reminder_message
