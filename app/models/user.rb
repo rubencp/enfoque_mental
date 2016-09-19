@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-after_initialize :default_values
 
   MESSAGES = []
     MESSAGES << '¿Quién eres?'
@@ -17,9 +16,7 @@ after_initialize :default_values
 
   def initialize(someparams)
     super
-    number = someparams[:number]
-    message_nr = 0
-    conversation_nr = 0
+    default_values
   end
 
   def increment_conversation
@@ -37,31 +34,23 @@ after_initialize :default_values
 
   end
 
-  def next
+  def message
     message = MESSAGES[message_nr]
-    increment_conversation
-    message
   end
 
-  def last
-    MESSAGES[message_nr]
-  end
 
   def send_reminder_message
  
-    account_sid = ENV['TWILIO_SID']
-    auth_token = ENV['TWILIO_AUTH']
-
     # set up a client to talk to the Twilio REST API 
-    @client = Twilio::REST::Client.new account_sid, auth_token 
+    @client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_AUTH'] 
      
     @client.account.messages.create({
        :from => '+525549998395', 
        :to => self.number, 
-       :body => last,  
+       :body => message,  
      }) 
 
-    puts "Re-Sending:" + last + " to: " + self.number
+    puts "Re-Sending:" + message + " to: " + self.number
 
   end
 

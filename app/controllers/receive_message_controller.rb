@@ -1,7 +1,10 @@
 class ReceiveMessageController < ApplicationController
   def receive
     from_number = params['From']
-    message = User.new_conversation(from_number).next
+    user = User.new_conversation(from_number)
+
+    user.increment_conversation
+    message = user.message
 
    twiml = Twilio::TwiML::Response.new do |r|
     r.Message message 
