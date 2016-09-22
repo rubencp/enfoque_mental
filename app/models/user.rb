@@ -24,6 +24,10 @@ class User < ApplicationRecord
       self.message_nr = 0
       self.conversation_nr += 1
     end
+    update_last_message_timestamp
+  end
+
+  def update_last_message_timestamp
     self.last_message_at = Time.now
     save
   end
