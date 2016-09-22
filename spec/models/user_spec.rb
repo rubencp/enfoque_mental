@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe '#next' do
-    let(:from_number)  { '+4917664825233' }
+    let(:from_number) { '+4917664825233' }
     let(:user_conversation) { User.new_conversation(from_number) }
 
     it 'responds with the first message of the conversation' do
