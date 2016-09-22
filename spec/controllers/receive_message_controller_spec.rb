@@ -7,7 +7,9 @@ RSpec.describe ReceiveMessageController, type: :controller do
     let(:phone_number) { '+5213333595550' }
 
     before do
-      allow_any_instance_of(User).to receive(:new_conversation) { phone_number }
+
+      allow_any_instance_of(User).to receive(:next) { first_message }
+
 
       process :receive, method: :post, params: { from: phone_number }
     end
