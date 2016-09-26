@@ -37,11 +37,6 @@ class User < ApplicationRecord
   end
 
   def next_message
-    message = MESSAGES[message_nr]
-    message
-  end
-
-  def last
     MESSAGES[message_nr]
   end
 
@@ -54,8 +49,8 @@ class User < ApplicationRecord
 
     @client.account.messages.create(from: ENV['FROM_TWILIO_NUMBER'],
                                     to: number,
-                                    body: last)
+                                    body: next_message)
 
-    puts 'Re-Sending:' + last + ' to: ' + number
+    puts 'Re-Sending:' + next_message + ' to: ' + number
   end
 end
