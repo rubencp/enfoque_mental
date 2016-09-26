@@ -32,10 +32,6 @@ class User < ApplicationRecord
     save
   end
 
-  def self.new_conversation(phone_number)
-    @user = User.find_or_create_by(number: phone_number)
-  end
-
   def next_message
     MESSAGES[message_nr]
   end
