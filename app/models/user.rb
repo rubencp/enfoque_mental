@@ -36,9 +36,8 @@ class User < ApplicationRecord
     @user = User.find_or_create_by(number: phone_number)
   end
 
-  def next
+  def next_message
     message = MESSAGES[message_nr]
-    increment_conversation
     message
   end
 
