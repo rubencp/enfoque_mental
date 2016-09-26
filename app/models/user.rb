@@ -41,7 +41,6 @@ class User < ApplicationRecord
     @client.account.messages.create(from: ENV['FROM_TWILIO_NUMBER'],
                                     to: number,
                                     body: next_message)
-    update_last_message_timestamp
     increment_conversation
 
     puts 'Re-Sending:' + next_message + ' to: ' + number
