@@ -1,7 +1,7 @@
 class ReceiveMessageController < ApplicationController
   def receive
     from_number = params['From']
-    user        = User.new(number: from_number)
+    user        = User.find_or_create_by(number: from_number)
 
     user.increment_conversation
 
