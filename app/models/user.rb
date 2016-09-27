@@ -1,13 +1,12 @@
 class User < ApplicationRecord
-  MESSAGES = [
-    '¿Quién eres?',
-    '¿Cuál es tu propósito en esta vida?',
-    '¿Cuál es tu vocación?',
-    '¿Cómo te sientes?',
-    '¿Qué decides plasmar como tu obra maestra?',
-    '¿Qué canción te motiva?',
-    '¿Qué siguiente acción te necesita?',
-  ]
+  MESSAGES = []
+  MESSAGES << '¿Quién eres?'
+  MESSAGES << '¿Cuál es tu propósito en esta vida?'
+  MESSAGES << '¿Cuál es tu vocación?'
+  MESSAGES << '¿Cómo te sientes?'
+  MESSAGES << '¿Qué decides plasmar como tu obra maestra?'
+  MESSAGES << '¿Qué canción te motiva?'
+  MESSAGES << '¿Qué siguiente acción te necesita?'
 
   scope :older_than_hours, -> (n) { where('last_message_at < ?', Time.now - n.hours) }
 
