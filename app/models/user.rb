@@ -27,22 +27,7 @@ class User < ApplicationRecord
     update_last_message_timestamp
   end
 
-  def update_last_message_timestamp
-    self.last_message_at = Time.now
-    save
-  end
-
-  def self.new_conversation(phone_number)
-    @user = User.find_or_create_by(number: phone_number)
-  end
-
-  def next
-    message = MESSAGES[message_nr]
-    increment_conversation
-    message
-  end
-
-  def last
+  def next_message
     MESSAGES[message_nr]
   end
 
@@ -55,8 +40,16 @@ class User < ApplicationRecord
 
     @client.account.messages.create(from: ENV['FROM_TWILIO_NUMBER'],
                                     to: number,
-                                    body: last)
+                                    body: next_message)
+    increment_conversation
 
-    puts 'Re-Sending:' + last + ' to: ' + number
+    puts 'Re-Sending:' + next_message + ' to: ' + number
+  end
+
+  private
+
+  def update_last_message_timestamp
+    self.last_message_at = Time.now
+    save
   end
 end
