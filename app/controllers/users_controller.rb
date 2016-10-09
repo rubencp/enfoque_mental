@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  http_basic_authenticate_with name: ENV['USER'], password: ENV['PASSWORD']
   before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
