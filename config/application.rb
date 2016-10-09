@@ -1,7 +1,7 @@
 require_relative 'boot'
 
 #Add by default All
-#require 'rails/all'
+require 'rails/all'
 
 #or Only the required by the rails-api
 require 'rails'
