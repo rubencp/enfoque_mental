@@ -6,7 +6,7 @@ class Conversation
     '¿Cómo te sientes?',
     '¿Qué decides plasmar como tu obra maestra?',
     '¿Qué canción te motiva?',
-    '¿Qué siguiente acción te necesita?'
+    '¿Qué acción te necesita?'
   ].freeze
 
   def initialize(user)
