@@ -1,17 +1,23 @@
 class UsersController < ApplicationController
   http_basic_authenticate_with name: ENV['USER'], password: ENV['PASSWORD']
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   def index
     @users = User.all
-
-    #render json: @users
   end
 
   # GET /users/1
   def show
-    render json: @user
+  end
+
+  # GET /users/new
+  def new
+    @user = User.new
+  end
+
+  # GET /users/1/edit
+  def edit
   end
 
   # POST /users
@@ -19,35 +25,35 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      render json: @user, status: :created, location: @user
+      redirect_to @user, notice: 'User was successfully created.'
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render :new
     end
   end
 
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      render json: @user
+      redirect_to @user, notice: 'User was successfully updated.'
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render :edit
     end
   end
 
   # DELETE /users/1
   def destroy
     @user.destroy
+    redirect_to users_url, notice: 'User was successfully destroyed.'
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_user
+      @user = User.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_user
-    @user = User.find(params[:id])
-  end
-
-  # Only allow a trusted parameter "white list" through.
-  def user_params
-    params.require(:user).permit(:name, :number, :message_nr, :conversation_nr)
-  end
+    # Only allow a trusted parameter "white list" through.
+    def user_params
+      params.require(:user).permit(:name, :number, :message_nr, :conversation_nr, :last_message_at)
+    end
 end

@@ -1,23 +1,37 @@
+<p id="notice"><%= notice %></p>
 
+<h1>Usuarios</h1>
 
-<table class="table table-striped">
+ <table id="sortable_table" class="display table table-striped  table-hover table-condensed" cellspacing="0" width="100%">
   <thead>
+    <tr>
     <th>Nombre</th>
     <th>Numero</th>
-    <th>Msg Nr</th>
-    <th>Conversacion Nr</th>
-    <th>Ultimo Mensaje</th>
+    <th>Mensage enviado</th>
+    <th># Conversacion</th>
+    <th>Fecha del último mensaje</th>
+    <th></th>
+    </tr>
   </thead>
+
   <tbody>
   <% @users.each do |user| %>
     <tr>
       <td><%= user.name %></td>
       <td><%= user.number %></td>
-      <td><%= user.message_nr %></td>
+      <td><%= Conversation.message(user.message_nr) %></td>
       <td><%= user.conversation_nr %></td>
       <td><%= user.last_message_at %></td>
+      <td><%= link_to 'Ver', user , class: "btn btn-info btn-xs" %>
+        <%= link_to 'Editar', edit_user_path(user) , class: "btn btn-warning btn-xs" %>
+        <%= link_to '', user, method: :delete, data: { confirm: 'Estas Seguro?' } ,class: "btn btn-danger btn-xs glyphicon glyphicon-remove-sign"  %></td>
+
     </tr>
     <% end %>
   </tbody>
 </table>
 
+ <!-- render 'table', user: @user -->
+
+<br>
+<%#= link_to 'Nuevo Usuario', new_user_path ,class: "btn btn-primary btn-sm" %>

@@ -39,3 +39,7 @@ heroku run rake db:migrate
 heroku restart
 
 heroku run console
+
+
+rails g scaffold User name:string number:string message_nr:integer conversation_nr:integer last_message_at:date
+

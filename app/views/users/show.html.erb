@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<p>
+<strong>Nombre:</strong>
+<%= @user.name %>
+</p>
+<p>
+<strong>Numero:</strong>
+<%= @user.number %>
+</p>
+<p>
+<strong>Message nr:</strong>
+<%= @user.message_nr %>
+</p>
+<p>
+<strong>Conversation nr:</strong>
+<%= @user.conversation_nr %>
+</p>
+<p>
+<strong>Last message at:</strong>
+<%= @user.last_message_at %>
+</p>
+
+<%= link_to '', users_path, class: "btn btn-default btn-sm glyphicon glyphicon-circle-arrow-left" %>
+<%= link_to 'Editar', edit_user_path(@user), class: "btn btn-sm btn-warning " %> 
