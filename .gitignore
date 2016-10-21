@@ -19,4 +19,3 @@ coverage
 /log/*
 !/log/.keep
 /tmp
-lib/templates

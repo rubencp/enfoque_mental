@@ -52,15 +52,4 @@ RSpec.describe Conversation do
       conversation.send_reminder
     end
   end
-
-
-  describe ':message' do
-
-    it 'reads out the constant message by number' do
-    expect(Conversation.message(0)).to eq('¿Quién eres?')
-    expect(Conversation.message(1)).to eq('¿Cuál es tu propósito en esta vida?')
-    end
-  end
-
-
 end

@@ -29,10 +29,6 @@ class Conversation
                                    to: @user.number, body: message)
   end
 
-  def self.message(number)
-    MESSAGES[number]
-  end
-
   private
 
   def update_message_nr
