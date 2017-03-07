@@ -5,8 +5,8 @@ class Conversation
     '¿Cuál es tu vocación?',
     '¿Cómo te sientes?',
     '¿Qué decides plasmar como tu obra maestra?',
-    '¿Qué canción te motiva?',
-    '¿Qué acción te necesita?'
+    '¿Qué deseas?',
+    '¿Cuál es tu acción prioritaria?'
   ].freeze
 
   def initialize(user)
