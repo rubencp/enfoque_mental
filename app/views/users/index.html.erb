@@ -19,7 +19,7 @@
     <tr>
       <td><%= user.name %></td>
       <td><%= user.number %></td>
-      <td><%= Conversation.message(user.message_nr) %></td>
+      <td><%= Conversation.message(user.message_nr-1) %></td>
       <td><%= user.conversation_nr %></td>
       <td><%= user.last_message_at %></td>
       <td><%= link_to 'Ver', user , class: "btn btn-info btn-xs" %>
